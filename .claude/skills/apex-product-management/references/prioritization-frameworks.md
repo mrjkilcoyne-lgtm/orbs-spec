@@ -22,4 +22,4 @@ Deciding what to build next when demand exceeds capacity: scoring models, cost-o
 - Treating stack rank as sacred for a quarter: cost of delay changes when a competitor ships or a deal-blocking gap emerges, and the rank must follow.
 
 ## Tools & references
-Reinertsen "Principles of Product Development Flow" (WSJF/CD3), Intercom's RICE, Kano model, Ulwick "Jobs to Be Done"/ODI opportunity scores, ITAMar Gilad's ICE + confidence meter.
+Reinertsen "Principles of Product Development Flow" (WSJF/CD3), Intercom's RICE, Kano model, Ulwick "Jobs to Be Done"/ODI opportunity scores, Itamar Gilad's ICE + confidence meter.
