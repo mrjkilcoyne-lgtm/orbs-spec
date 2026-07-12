@@ -14,7 +14,7 @@ ACID properties (Atomicity, Consistency, Isolation, Durability). Isolation level
 - MVCC (Multiversion Concurrency Control) reduces locking: readers see a consistent snapshot, writers don't block readers. PostgreSQL uses MVCC; MySQL InnoDB also uses it. Traditional 2PL (two-phase locking) is simpler but slower.
 
 ## Apex practices
-- Start with READ COMMITTED for OLTP systems; it prevents dirty reads and non-repeatable reads within a transaction, covering most bugs. Only escalate to REPEATABLE READ or SERIALIZABLE if profiling shows conflicts.
+- Start with READ COMMITTED for OLTP systems; it prevents dirty reads (but not non-repeatable or phantom reads), covering most workloads. Escalate to REPEATABLE READ or SERIALIZABLE only where re-read consistency inside a transaction actually matters.
 - Use explicit pessimistic locks (SELECT FOR UPDATE) only when you must ensure exclusive access (e.g., decrementing inventory by exactly 1). Optimistic locking (version columns) is often faster.
 - Beware of implicit transactions in autocommit mode: a single statement is a transaction, but a series of statements without BEGIN/COMMIT are separate transactions. Wrap multi-statement operations in explicit transactions.
 - Test anomalies: write tests that spawn concurrent transactions and verify the application handles phantom reads and non-repeatable reads correctly (e.g., balance doesn't go negative).
